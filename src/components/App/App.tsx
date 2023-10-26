@@ -1,26 +1,15 @@
-import logo from '../../assets/logo.svg';
-
+import 'semantic-ui-css/semantic.min.css';
 import './App.scss';
+import Header from '../Header/Header';
+import SearchBar from '../SearchBar/SearchBar';
+import SearchResult from '../SearchResult/SearchResult';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-
-        <p>
-          Edit <code>src/components/App/App.tsx</code> and save to reload.
-        </p>
-
-        <a
-          className="App-link"
-          href="https://react.dev/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Header />
+      <SearchBar />
+      <SearchResult />
     </div>
   );
 }
