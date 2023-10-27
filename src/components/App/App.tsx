@@ -16,7 +16,7 @@ function App() {
       <Header />
       <SearchBar onSubmitSearch={setInputQuery} />
       <SearchResult
-        repo={reposData.items}
+        repos={reposData.items}
         total_count={reposData.total_count}
       />
     </div>
