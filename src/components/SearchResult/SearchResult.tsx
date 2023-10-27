@@ -33,7 +33,6 @@ function SearchResult({ repos, total_count }: SearchResultProps) {
                       <Card.Description>{repo.description}</Card.Description>
                     </Card.Content>
                   </Card>
-
                   {/* <OneCard /> */}
                 </Grid.Column>
               ))}
