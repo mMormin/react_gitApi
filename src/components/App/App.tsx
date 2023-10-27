@@ -21,9 +21,6 @@ function App() {
         .then((data) => {
           setReposList(data.items);
           setReposCount(data.total_count);
-        })
-        .catch((error) => {
-          console.error('Error fetching data from GitHub API:', error);
         });
     } else {
       setReposCount(reposData.total_count);
