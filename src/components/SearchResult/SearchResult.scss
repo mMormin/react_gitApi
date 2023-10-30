@@ -1,13 +1,18 @@
 @use '../../styles/variables' as v;
 
 .result {
-  padding: 1rem 0;
   border-radius: 0.5rem;
 
   &__number {
     text-align: left;
     font-size: 1.5rem;
-    margin-bottom: 4rem;
+    margin-bottom: v.$gap-default;
+    border-bottom: 1px solid v.$color-primary;
+
+    span {
+      font-weight: bold;
+      color: v.$color-primary;
+    }
   }
 
   .ui {

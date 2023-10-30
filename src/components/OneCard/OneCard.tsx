@@ -1,6 +1,5 @@
 import { Card, Image } from 'semantic-ui-react';
 import { Repo } from '../../@types/repo';
-import './OneCard.scss';
 
 type OneCardProps = {
   repo: Repo;

@@ -18,7 +18,7 @@ function SearchResult({ repos, total_count }: SearchResultProps) {
     <div className="container">
       <div className="result container__wrapper">
         <p className="result__number">
-          La recherche a donné {total_count} résultats
+          <span>{total_count}</span> repositories trouvés :
         </p>
         <Grid columns={3}>
           {reposGroups.map((reposGroup, index) => (

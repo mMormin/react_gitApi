@@ -4,21 +4,21 @@ header {
   display: flex;
   width: 100%;
   justify-content: center;
-  padding: 2rem 0;
-  vertical-align: baseline;
+  padding: v.$gap-default 0;
 
   h1 {
-    margin: 0 0 0 1rem;
+    margin-left: v.$gap-default / 2;
     padding: 0;
-    letter-spacing: 0.05rem;
-    line-height: 4rem;
     font-weight: normal;
+    letter-spacing: -0.07rem;
     span {
-      font-weight: bold;
-      color: #4078c0;
-
       &:first-child {
-        color: #4078c0;
+        font-weight: bold;
+        font-size: 2.5rem;
+      }
+      &:last-child {
+        font-size: 1.5rem;
+        color: v.$color-primary;
       }
     }
   }
