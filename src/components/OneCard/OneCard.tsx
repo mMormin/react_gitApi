@@ -1,18 +1,19 @@
 import { Card, Image } from 'semantic-ui-react';
+import { Repo } from '../../@types/repo';
 import './OneCard.scss';
 
-function OneCard() {
+type OneCardProps = {
+  repo: Repo;
+};
+
+function OneCard({ repo }: OneCardProps) {
   return (
     <Card>
-      <Image src="https://placehold.co/400x400/png" wrapped ui={false} />
+      <Image src={repo.owner.avatar_url} wrapped ui={false} />
       <Card.Content>
-        <Card.Header>react swag</Card.Header>
-        <Card.Meta>react swag</Card.Meta>
-        <Card.Description>
-          Matthew is a musician living in Nashville. Matthew is a musician
-          living in Nashville. Matthew is a musician living in Nashville.
-          Matthew is a musician living in Nashville.
-        </Card.Description>
+        <Card.Header>{repo.name}</Card.Header>
+        <Card.Meta>{repo.owner.login}</Card.Meta>
+        <Card.Description>{repo.description}</Card.Description>
       </Card.Content>
     </Card>
   );
