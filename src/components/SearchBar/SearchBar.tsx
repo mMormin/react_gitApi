@@ -27,7 +27,7 @@ function SearchBar({ onSubmitSearch }: FormProps) {
             <Input
               icon="search"
               iconPosition="left"
-              placeholder="Search..."
+              placeholder="Rechercher un repo"
               value={inputValue}
               onChange={handleInputChange}
             />
