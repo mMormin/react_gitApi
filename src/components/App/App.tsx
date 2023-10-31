@@ -41,7 +41,6 @@ function App() {
           }
         });
     } else {
-      // Sinon je met à jour mes states avec des valeurs vide
       setReposList([]);
       setReposCount(0);
     }
@@ -53,9 +52,11 @@ function App() {
     <div className="app">
       <Header />
       <SearchBar onSubmitSearchForm={handleSubmitSearchForm} />
+
       {reposCount > 0 && (
         <ReposResult repos={reposList} totalRepos={reposCount} />
       )}
+
       {lastPage > pageNumber && (
         <Button onClick={() => setPageNumber(pageNumber + 1)}>
           Charger plus (page {pageNumber} / {lastPage})
