@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Button } from 'semantic-ui-react';
+import axios from 'axios';
 import Header from '../Header/Header';
 import SearchBar from '../SearchBar/SearchBar';
 import ReposResult from '../ReposResult/ReposResult';
@@ -7,28 +9,58 @@ import 'semantic-ui-css/semantic.min.css';
 import './App.scss';
 
 function App() {
+  const nbPerPage = 12;
   const [reposCount, setReposCount] = useState(reposData.total_count);
   const [reposList, setReposList] = useState(reposData.items);
+  const [searchText, setSearchText] = useState('');
+  const [pageNumber, setPageNumber] = useState(1);
 
   const handleSubmitSearchForm = (textToSearch: string) => {
-    if (textToSearch !== '') {
-      fetch(`https://api.github.com/search/repositories?q=${textToSearch}`)
-        .then((response) => response.json())
-        .then((data) => {
-          setReposList(data.items);
-          setReposCount(data.total_count);
+    setSearchText(textToSearch);
+    setPageNumber(1);
+  };
+
+  useEffect(() => {
+    if (searchText !== '') {
+      axios
+        .get(`https://api.github.com/search/repositories`, {
+          params: {
+            q: searchText,
+            sort: 'stars',
+            order: 'desc',
+            page: pageNumber,
+            per_page: nbPerPage,
+          },
+        })
+        .then((response) => {
+          if (pageNumber === 1) {
+            setReposList(response.data.items);
+            setReposCount(response.data.total_count);
+          } else {
+            setReposList((oldRepos) => [...oldRepos, ...response.data.items]);
+          }
         });
     } else {
+      // Sinon je met à jour mes states avec des valeurs vide
       setReposList([]);
       setReposCount(0);
     }
-  };
+  }, [searchText, pageNumber]);
+
+  const lastPage = Math.ceil(reposCount / nbPerPage);
 
   return (
     <div className="app">
       <Header />
       <SearchBar onSubmitSearchForm={handleSubmitSearchForm} />
-      <ReposResult repos={reposList} totalRepos={reposCount} />
+      {reposCount > 0 && (
+        <ReposResult repos={reposList} totalRepos={reposCount} />
+      )}
+      {lastPage > pageNumber && (
+        <Button onClick={() => setPageNumber(pageNumber + 1)}>
+          Charger plus (page {pageNumber} / {lastPage})
+        </Button>
+      )}
     </div>
   );
 }

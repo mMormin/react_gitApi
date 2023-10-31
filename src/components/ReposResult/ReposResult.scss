@@ -19,5 +19,9 @@
 
   .card {
     word-wrap: break-word;
+    .description {
+      max-height: 9rem;
+      overflow: hidden;
+    }
   }
 }
