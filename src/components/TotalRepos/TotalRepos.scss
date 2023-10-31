@@ -1,0 +1,11 @@
+@use '../../styles/variables' as v;
+
+p {
+  text-align: left;
+  font-size: 1.5rem;
+
+  span {
+    font-weight: bold;
+    color: v.$color-primary;
+  }
+}

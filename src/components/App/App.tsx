@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Header from '../Header/Header';
 import SearchBar from '../SearchBar/SearchBar';
-import SearchResult from '../SearchResult/SearchResult';
+import ReposResult from '../ReposResult/ReposResult';
 import reposData from '../../../data/repos';
 import 'semantic-ui-css/semantic.min.css';
 import './App.scss';
@@ -28,7 +28,7 @@ function App() {
     <div className="app">
       <Header />
       <SearchBar onSubmitSearchForm={handleSubmitSearchForm} />
-      <SearchResult repos={reposList} total_count={reposCount} />
+      <ReposResult repos={reposList} totalRepos={reposCount} />
     </div>
   );
 }

@@ -3,16 +3,8 @@
 .result {
   border-radius: 0.5rem;
 
-  &__number {
+  &__repos {
     text-align: left;
-    font-size: 1.5rem;
-    margin-bottom: v.$gap-default;
-    border-bottom: 1px solid v.$color-primary;
-
-    span {
-      font-weight: bold;
-      color: v.$color-primary;
-    }
   }
 
   .ui {
@@ -23,5 +15,9 @@
         text-align: left;
       }
     }
+  }
+
+  .card {
+    word-wrap: break-word;
   }
 }
