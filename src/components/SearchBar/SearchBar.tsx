@@ -1,35 +1,36 @@
-import { FormEvent, ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { Form, Input } from 'semantic-ui-react';
 import './SearchBar.scss';
 
-type FormProps = {
-  onSubmitSearch: (newValue: string) => void;
+type SearchBarProps = {
+  onSubmitSearchForm: (textToSearch: string) => void;
 };
 
-function SearchBar({ onSubmitSearch }: FormProps) {
-  const [inputValue, setInputValue] = useState('');
+function SearchBar({ onSubmitSearchForm }: SearchBarProps) {
+  const [searchText, setSearchText] = useState('');
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    setInputValue(event.target.value);
+  const handleChangeSearchText = (event: ChangeEvent<HTMLInputElement>) => {
+    const newSearchText = event.target.value;
+
+    setSearchText(newSearchText);
   };
 
-  const handleSubmitSearchInput = (event: FormEvent<HTMLFormElement>): void => {
-    event.preventDefault();
-
-    onSubmitSearch(inputValue);
+  const handleSubmitSearchForm = () => {
+    onSubmitSearchForm(searchText);
   };
 
   return (
     <div className="container">
       <div className="container__wrapper">
-        <Form onSubmit={handleSubmitSearchInput}>
+        <Form onSubmit={handleSubmitSearchForm}>
           <Form.Field>
             <Input
+              name="search"
               icon="search"
               iconPosition="left"
               placeholder="Rechercher un repo"
-              value={inputValue}
-              onChange={handleInputChange}
+              value={searchText}
+              onChange={handleChangeSearchText}
             />
           </Form.Field>
         </Form>
